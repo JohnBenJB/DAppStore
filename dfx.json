@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "DAppStore_backend": {
+      "main": "src/DAppStore_backend/main.mo",
+      "type": "motoko"
+    },
+    "DAppStore_frontend": {
+      "dependencies": [
+        "DAppStore_backend"
+      ],
+      "source": [
+        "src/DAppStore_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "DAppStore_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
