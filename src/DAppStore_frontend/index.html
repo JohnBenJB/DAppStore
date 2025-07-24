@@ -1,17 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>IC Hello Starter</title>
-  <base href="/" />
-  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAppStore</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background-color: rgb(252, 252, 252)
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      height: 48px;
+      max-height: 8vh;
+      width: auto;
+      margin-right: 0.5rem;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #000000;
+      white-space: nowrap;
+    }
+    .profile i {
+      font-size: 1.2rem;
+      color: #000000;
+    }
+    .nav-tabs {
+      display: flex;
+      justify-content: space-around;
+      background-color: #ffffff;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #00000046;
+    }
+    .nav-tabs button {
+      background: none;
+      border: none;
+      color: #000000;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .nav-tabs button.active {
+      color: #fb8000;
+      border-bottom: 3px solid #fb8000;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+      margin-top: 1rem;
+    }
+    .featured, .category-section {
+      padding: 1rem;
+    }
+    .featured-app {
+      background-color: #000000;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .featured-app img {
+      width: 100%;
+      height: auto;
+    }
+    .app-info {
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .meta {
+      color: white;
+    }
+    .app-info .meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .app-info .meta span {
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+    .install-btn {
+      background-color: #fb8000;
+      border: none;
+      border-radius: 6px;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .category-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    .app-card {
+      background-color: #000000;
+      padding: 0.8rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .app-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+    .app-card .title {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      color: #ffffff;
+    }
+    .app-card .subtitle {
+      font-size: 0.8rem;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+    .app-card .rating {
+      font-size: 0.8rem;
+      color: gold;
+    }
+    @media (max-width: 600px) {
+      .logo-img {
+        height: 36px;
+      }
+      .logo-text {
+        font-size: 1.2rem;
+      }
+      .app-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 768px) {
+      .logo-img {
+        height: 56px;
+      }
+      .logo-text {
+        font-size: 1.8rem;
+      }
+      .app-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="DAppStore Logo" class="logo-img" />
+      <span class="logo-text">AppStore</span>
+    </div>
+    <div class="profile">
+      <i class="fas fa-bell"></i>
+    </div>
+  </header>
 
+  <nav class="nav-tabs">
+    <button id="tab-featured" class="active" onclick="showSection('featured', this)">For you</button>
+    <button id="tab-top-charts" onclick="showSection('top-charts', this)">Top charts</button>
+    <button id="tab-kids" onclick="showSection('kids', this)">Kids</button>
+    <button id="tab-categories" onclick="showSection('categories', this)">Categories</button>
+  </nav>
+
+  <section id="featured" class="active">
+    <div class="featured-app">
+      <img src="https://via.placeholder.com/800x300" alt="Featured App">
+      <div class="app-info">
+        <div class="meta">
+          <strong>CryptoQuest</strong>
+          <span>CryptoDev Inc. • 12+ • 4.5★</span>
+        </div>
+        <button class="install-btn">Install</button>
+      </div>
+    </div>
+
+    <div class="category-section">
+    <h2 class="category-title">Suggested for you</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DApp Finance</div>
+        <div class="subtitle">Finance • 10MB</div>
+        <div class="rating">4.6★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">NFT Market</div>
+        <div class="subtitle">Marketplace • 25MB</div>
+        <div class="rating">4.3★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DeFi Vault</div>
+        <div class="subtitle">Banking • 12MB</div>
+        <div class="rating">4.7★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">Chain Games</div>
+        <div class="subtitle">Games • 45MB</div>
+        <div class="rating">4.8★</div>
+      </div>
+    </div>
+</div>
+  </section>
+
+  <section id="top-charts">
+    <h2 class="category-title">Top Charts</h2>
+    <div class="app-grid">
+      <!-- Dummy apps -->
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">MetaTrade</div>
+        <div class="subtitle">Finance • 8MB</div>
+        <div class="rating">4.9★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">ChainExplorer</div>
+        <div class="subtitle">Tools • 14MB</div>
+        <div class="rating">4.8★</div>
+      </div>
+    </div>
+
+    <div class="category-section">
+    <h2 class="category-title">Suggested for you</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DApp Finance</div>
+        <div class="subtitle">Finance • 10MB</div>
+        <div class="rating">4.6★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">NFT Market</div>
+        <div class="subtitle">Marketplace • 25MB</div>
+        <div class="rating">4.3★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DeFi Vault</div>
+        <div class="subtitle">Banking • 12MB</div>
+        <div class="rating">4.7★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">Chain Games</div>
+        <div class="subtitle">Games • 45MB</div>
+        <div class="rating">4.8★</div>
+      </div>
+    </div>
+</div>
+  </section>
+
+  <section id="kids">
+    <h2 class="category-title">Kids</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">CryptoPals</div>
+        <div class="subtitle">Education • 25MB</div>
+        <div class="rating">4.5★</div>
+      </div>
+    </div>
+
+    <div class="category-section">
+    <h2 class="category-title">Suggested for you</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DApp Finance</div>
+        <div class="subtitle">Finance • 10MB</div>
+        <div class="rating">4.6★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">NFT Market</div>
+        <div class="subtitle">Marketplace • 25MB</div>
+        <div class="rating">4.3★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DeFi Vault</div>
+        <div class="subtitle">Banking • 12MB</div>
+        <div class="rating">4.7★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">Chain Games</div>
+        <div class="subtitle">Games • 45MB</div>
+        <div class="rating">4.8★</div>
+      </div>
+    </div>
+</div>
+  </section>
+
+  <section id="categories">
+    <h2 class="category-title">Suggested for you</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DApp Finance</div>
+        <div class="subtitle">Finance • 10MB</div>
+        <div class="rating">4.6★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">NFT Market</div>
+        <div class="subtitle">Marketplace • 25MB</div>
+        <div class="rating">4.3★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DeFi Vault</div>
+        <div class="subtitle">Banking • 12MB</div>
+        <div class="rating">4.7★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">Chain Games</div>
+        <div class="subtitle">Games • 45MB</div>
+        <div class="rating">4.8★</div>
+      </div>
+    </div>
+
+    <div class="category-section">
+    <h2 class="category-title">Suggested for you</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DApp Finance</div>
+        <div class="subtitle">Finance • 10MB</div>
+        <div class="rating">4.6★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">NFT Market</div>
+        <div class="subtitle">Marketplace • 25MB</div>
+        <div class="rating">4.3★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">DeFi Vault</div>
+        <div class="subtitle">Banking • 12MB</div>
+        <div class="rating">4.7★</div>
+      </div>
+      <div class="app-card">
+        <img src="https://via.placeholder.com/150" alt="App">
+        <div class="title">Chain Games</div>
+        <div class="subtitle">Games • 45MB</div>
+        <div class="rating">4.8★</div>
+      </div>
+    </div>
+</div>
+  </section>
+
+  <script>
+    function showSection(id, btn) {
+      const sections = document.querySelectorAll('section');
+      const buttons = document.querySelectorAll('.nav-tabs button');
+      sections.forEach(s => s.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
+
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
 </html>
