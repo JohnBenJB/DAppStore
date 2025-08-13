@@ -8,15 +8,37 @@ import Hash "mo:base/Hash";
 
 // Main actor for DAppStore - a decentralized marketplace for dApps
 actor DAppStore {
-    
-    // Type definition for a dApp entry
+
+    // ------------------------------------------------------------------------
+    // Type Definitions
+    // ------------------------------------------------------------------------
+
+    /** 
+     * Type definition for a DApp entry
+     */
     public type DApp = {
-        id: Nat;
-        name: Text;
-        description: Text;
-        link: Text;
-        developer: Principal;
+        id: Nat;                        // Unique identifier for the DApp
+        name: Text;                      // Name of the DApp
+        category: Text;                  // Category (e.g., Finance, Social)
+        shortDescription: Text;          // Short description for listings
+        detailedDescription: Text;       // Full description of the DApp
+        canisterId: Text;                // ICP Canister ID of the DApp
+        logoUrl: Text;                   // URL to the DApp's logo (store on IPFS or other decentralized storage)
+        // screenshots: [Text];          // Optional: Array of screenshot URLs (commented out for now)
+        developer: Principal;            // Principal of the developer
     };
+
+    
+    // // Type definition for a dApp entry
+    // public type DApp = {
+    //     id: Nat;
+    //     name: Text;
+    //     description: Text;
+    //     link: Text;
+    //     developer: Principal;
+
+    
+    // };
     
     // Stable variable to maintain ID counter across upgrades
     stable var nextId: Nat = 0;
