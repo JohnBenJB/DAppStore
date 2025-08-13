@@ -140,6 +140,24 @@ actor DAppStore {
         return "DApp submitted successfully!";
     };
 
+    /**
+     * Retrieve all DApps
+     * @returns Array of all DApps
+     */
+    public shared query func getAllDapps(): async [DApp] {
+        Iter.toArray(dapps.vals())
+    };
+
+    /**
+     * Retrieve a DApp by its ID
+     * @param id - ID of the DApp
+     * @returns Optional DApp (null if not found)
+     */
+    public shared query func getDappById(id: Nat): async ?DApp {
+        dapps.get(id)
+    };
+
+
 
     
     // // Type definition for a dApp entry
