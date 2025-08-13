@@ -64,6 +64,31 @@ actor DAppStore {
         dappsStable := [];
     };
 
+    // ------------------------------------------------------------------------
+    // Helper functions
+    // ------------------------------------------------------------------------
+
+    /** 
+     * Generate a new unique DApp ID
+     */
+    private func getNewId(): Nat {
+        let id = nextDappId;
+        nextDappId += 1;
+        return id;
+    };
+
+    /**
+     * Check if a DApp with the given name already exists
+     */
+    private func nameExists(name: Text): Bool {
+        for (dapp in dapps.vals()) {
+            if (Text.equal(dapp.name, name)) {
+                return true;
+            };
+        };
+        false
+    };
+
     
     // // Type definition for a dApp entry
     // public type DApp = {
@@ -99,15 +124,15 @@ actor DAppStore {
     //     dapps.put(id, dapp);
     // };
     
-    // Helper function to check if a dApp name already exists
-    private func nameExists(name: Text): Bool {
-        for (dapp in dapps.vals()) {
-            if (Text.equal(dapp.name, name)) {
-                return true;
-            };
-        };
-        false
-    };
+    // // Helper function to check if a dApp name already exists
+    // private func nameExists(name: Text): Bool {
+    //     for (dapp in dapps.vals()) {
+    //         if (Text.equal(dapp.name, name)) {
+    //             return true;
+    //         };
+    //     };
+    //     false
+    // };
     
     /**
      * Submit a new dApp to the store
