@@ -196,9 +196,37 @@ actor DAppStore {
         filterDappsByDeveloper(developer)
     };
 
+    /**
+     * Delete a DApp (only by the developer who submitted it)
+     * @param id - ID of the DApp to delete
+     * @returns Success or unauthorized message
+     */
+    public shared(msg) func deleteDapp(id: Nat): async Text {
+        let caller = msg.caller;
+
+        switch (dapps.get(id)) {
+            case null {
+                "Error: DApp not found."
+            };
+            case (?dapp) {
+                if (dapp.developer != caller) {
+                    "Error: Unauthorized. Only the developer can delete this DApp."
+                } else {
+                    ignore dapps.remove(id);
+                    "DApp deleted successfully."
+                }
+            };
+        };
+    };
 
 
 
+
+    
+
+
+
+    // FORMER CODES
     
     // // Type definition for a dApp entry
     // public type DApp = {
@@ -284,60 +312,60 @@ actor DAppStore {
     //     Iter.toArray(dapps.vals())
     // };
     
-    /**
-     * Get a specific dApp by its ID
-     * @param id - The unique ID of the dApp
-     * @returns Optional DApp (null if not found)
-     */
-    public shared func getDappById(id: Nat): async ?DApp {
-        // Fetch dApp from HashMap by ID
-        dapps.get(id)
-    };
+    // /**
+    //  * Get a specific dApp by its ID
+    //  * @param id - The unique ID of the dApp
+    //  * @returns Optional DApp (null if not found)
+    //  */
+    // public shared func getDappById(id: Nat): async ?DApp {
+    //     // Fetch dApp from HashMap by ID
+    //     dapps.get(id)
+    // };
     
-    /**
-     * Delete a dApp (only by the developer who submitted it)
-     * @param id - The unique ID of the dApp to delete
-     * @returns Success or unauthorized message
-     */
-    public shared(msg) func deleteDapp(id: Nat): async Text {
-        // Check if dApp exists
-        switch (dapps.get(id)) {
-            case (null) {
-                "DApp not found"
-            };
-            case (?dapp) {
-                // Check if caller is the developer who submitted the dApp
-                if (Principal.equal(msg.caller, dapp.developer)) {
-                    // Remove dApp from HashMap
-                    ignore dapps.remove(id);
-                    "DApp deleted successfully"
-                } else {
-                    "Unauthorized"
-                }
-            };
-        }
-    };
+    // /**
+    //  * Delete a dApp (only by the developer who submitted it)
+    //  * @param id - The unique ID of the dApp to delete
+    //  * @returns Success or unauthorized message
+    //  */
+    // public shared(msg) func deleteDapp(id: Nat): async Text {
+    //     // Check if dApp exists
+    //     switch (dapps.get(id)) {
+    //         case (null) {
+    //             "DApp not found"
+    //         };
+    //         case (?dapp) {
+    //             // Check if caller is the developer who submitted the dApp
+    //             if (Principal.equal(msg.caller, dapp.developer)) {
+    //                 // Remove dApp from HashMap
+    //                 ignore dapps.remove(id);
+    //                 "DApp deleted successfully"
+    //             } else {
+    //                 "Unauthorized"
+    //             }
+    //         };
+    //     }
+    // };
     
-    /**
-     * Get total number of dApps in the store
-     * @returns Total count of dApps
-     */
-    public shared func getTotalDapps(): async Nat {
-        dapps.size()
-    };
+    // /**
+    //  * Get total number of dApps in the store
+    //  * @returns Total count of dApps
+    //  */
+    // public shared func getTotalDapps(): async Nat {
+    //     dapps.size()
+    // };
     
-    /**
-     * Get dApps by a specific developer
-     * @param developer - Principal of the developer
-     * @returns Array of dApps by the specified developer
-     */
-    public shared func getDappsByDeveloper(developer: Principal): async [DApp] {
-        let developerDapps = Array.filter<DApp>(
-            Iter.toArray(dapps.vals()),
-            func(dapp: DApp): Bool {
-                Principal.equal(dapp.developer, developer)
-            }
-        );
-        developerDapps
-    };
+    // /**
+    //  * Get dApps by a specific developer
+    //  * @param developer - Principal of the developer
+    //  * @returns Array of dApps by the specified developer
+    //  */
+    // public shared func getDappsByDeveloper(developer: Principal): async [DApp] {
+    //     let developerDapps = Array.filter<DApp>(
+    //         Iter.toArray(dapps.vals()),
+    //         func(dapp: DApp): Bool {
+    //             Principal.equal(dapp.developer, developer)
+    //         }
+    //     );
+    //     developerDapps
+    // };
 }
