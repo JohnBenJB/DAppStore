@@ -28,6 +28,16 @@ actor DAppStore {
         developer: Principal;            // Principal of the developer
     };
 
+    // ------------------------------------------------------------------------
+    // Stable Variables (persist across upgrades)
+    // ------------------------------------------------------------------------
+
+    /** Persistent storage for all DApps as (id, DApp) tuples */
+    stable var dappsStable: [(Nat, DApp)] = [];
+
+    /** Stable counter to generate unique IDs */
+    stable var nextDappId: Nat = 0;
+
     
     // // Type definition for a dApp entry
     // public type DApp = {
@@ -40,11 +50,11 @@ actor DAppStore {
     
     // };
     
-    // Stable variable to maintain ID counter across upgrades
-    stable var nextId: Nat = 0;
+    // // Stable variable to maintain ID counter across upgrades
+    // stable var nextId: Nat = 0;
     
-    // Stable entries for HashMap persistence across upgrades
-    stable var dappEntries: [(Nat, DApp)] = [];
+    // // Stable entries for HashMap persistence across upgrades
+    // stable var dappEntries: [(Nat, DApp)] = [];
     
     // HashMap to store dApps with Nat keys
     let dapps = HashMap.HashMap<Nat, DApp>(0, Nat.equal, Hash.hash);
