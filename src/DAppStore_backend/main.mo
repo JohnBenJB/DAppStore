@@ -89,6 +89,19 @@ actor DAppStore {
         false
     };
 
+    /**
+     * Private helper to filter DApps by a specific developer
+     */
+    private func filterDappsByDeveloper(developer: Principal): [DApp] {
+        Array.filter<DApp>(
+            Iter.toArray(dapps.vals()),
+            func(dapp: DApp): Bool {
+                Principal.equal(dapp.developer, developer)
+            }
+        )
+    };
+
+
     // ------------------------------------------------------------------------
     // Public Functions
     // ------------------------------------------------------------------------
@@ -156,6 +169,33 @@ actor DAppStore {
     public shared query func getDappById(id: Nat): async ?DApp {
         dapps.get(id)
     };
+
+    /**
+     * Retrieve total number of DApps in the store
+     * @returns Count of DApps
+     */
+    public shared query func getTotalDapps(): async Nat {
+        dapps.size()
+    };
+
+    /**
+     * Get DApps owned by the current caller
+     * @returns Array of DApps submitted by the caller
+     */
+    public shared query(msg) func getMyDapps(): async [DApp] {
+        if (Principal.isAnonymous(msg.caller)) return [];
+        filterDappsByDeveloper(msg.caller)
+    };
+
+    /**
+     * Get DApps submitted by any developer
+     * @param developer - Principal of the developer
+     * @returns Array of DApps submitted by the given developer
+     */
+    public shared query func getDappsByDeveloper(developer: Principal): async [DApp] {
+        filterDappsByDeveloper(developer)
+    };
+
 
 
 
@@ -235,14 +275,14 @@ actor DAppStore {
     //     "DApp submitted successfully"
     // };
     
-    /**
-     * Get all dApps in the store
-     * @returns Array of all dApps
-     */
-    public shared func getAllDapps(): async [DApp] {
-        // Convert HashMap values to Array
-        Iter.toArray(dapps.vals())
-    };
+    // /**
+    //  * Get all dApps in the store
+    //  * @returns Array of all dApps
+    //  */
+    // public shared func getAllDapps(): async [DApp] {
+    //     // Convert HashMap values to Array
+    //     Iter.toArray(dapps.vals())
+    // };
     
     /**
      * Get a specific dApp by its ID
