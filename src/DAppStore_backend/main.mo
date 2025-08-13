@@ -38,6 +38,32 @@ actor DAppStore {
     /** Stable counter to generate unique IDs */
     stable var nextDappId: Nat = 0;
 
+    // ------------------------------------------------------------------------
+    // Runtime in-memory storage
+    // ------------------------------------------------------------------------
+
+    /** HashMap to store DApps in-memory for fast access */
+    var dapps: HashMap.HashMap<Nat, DApp> = HashMap.HashMap(10, Nat.equal, Hash.hash);
+
+    // ------------------------------------------------------------------------
+    // Upgrade hooks
+    // ------------------------------------------------------------------------
+
+    /**
+     * Pre-upgrade: persist current DApps to stable storage
+     */
+    system func preupgrade() {
+        dappsStable := Iter.toArray(dapps.entries());
+    };
+
+    /**
+     * Post-upgrade: restore DApps from stable storage into HashMap
+     */
+    system func postupgrade() {
+        dapps := HashMap.fromIter<Nat, DApp>(dappsStable.vals(), 10, Nat.equal, Hash.hash);
+        dappsStable := [];
+    };
+
     
     // // Type definition for a dApp entry
     // public type DApp = {
@@ -57,21 +83,21 @@ actor DAppStore {
     // stable var dappEntries: [(Nat, DApp)] = [];
     
     // HashMap to store dApps with Nat keys
-    let dapps = HashMap.HashMap<Nat, DApp>(0, Nat.equal, Hash.hash);
+    // let dapps = HashMap.HashMap<Nat, DApp>(0, Nat.equal, Hash.hash);
     
-    // System functions for upgrade persistence
-    system func preupgrade() {
-        dappEntries := Iter.toArray(dapps.entries());
-    };
+    // // System functions for upgrade persistence
+    // system func preupgrade() {
+    //     dappEntries := Iter.toArray(dapps.entries());
+    // };
     
-    system func postupgrade() {
-        dappEntries := [];
-    };
+    // system func postupgrade() {
+    //     dappEntries := [];
+    // };
     
-    // Initialize HashMap from stable storage
-    for ((id, dapp) in dappEntries.vals()) {
-        dapps.put(id, dapp);
-    };
+    // // Initialize HashMap from stable storage
+    // for ((id, dapp) in dappEntries.vals()) {
+    //     dapps.put(id, dapp);
+    // };
     
     // Helper function to check if a dApp name already exists
     private func nameExists(name: Text): Bool {
