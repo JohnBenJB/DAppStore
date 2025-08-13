@@ -89,6 +89,58 @@ actor DAppStore {
         false
     };
 
+    // ------------------------------------------------------------------------
+    // Public Functions
+    // ------------------------------------------------------------------------
+
+    /**
+     * Submit a new DApp to the store
+     * @param name - Name of the DApp
+     * @param category - Category of the DApp
+     * @param shortDescription - Short description
+     * @param detailedDescription - Full description
+     * @param canisterId - Canister ID of the DApp
+     * @param logoUrl - URL to the logo (stored on IPFS or similar)
+     * @returns Success or error message
+     */
+    public shared(msg) func submitDapp(
+        name: Text,
+        category: Text,
+        shortDescription: Text,
+        detailedDescription: Text,
+        canisterId: Text,
+        logoUrl: Text
+        // screenshots: [Text]       // Optional screenshots field commented out
+    ): async Text {
+        let caller = msg.caller;
+
+        if (Principal.isAnonymous(caller)) {
+            return "Please authenticate with Internet Identity.";
+        };
+
+        if (nameExists(name)) {
+            return "Error: Name already taken.";
+        };
+
+        let newDappId = getNewId();
+
+        let newDapp: DApp = {
+            id = newDappId;
+            name;
+            category;
+            shortDescription;
+            detailedDescription;
+            canisterId;
+            logoUrl;
+            // screenshots;             // Optional screenshots field 
+            developer = caller;
+        };
+
+        dapps.put(newDappId, newDapp);
+        return "DApp submitted successfully!";
+    };
+
+
     
     // // Type definition for a dApp entry
     // public type DApp = {
@@ -141,29 +193,29 @@ actor DAppStore {
      * @param link - Link to the dApp
      * @returns Success or error message
      */
-    public shared(msg) func submitDapp(name: Text, description: Text, link: Text): async Text {
-        // Check if name already exists
-        if (nameExists(name)) {
-            return "Name already taken";
-        };
+    // // public shared(msg) func submitDapp(name: Text, description: Text, link: Text): async Text {
+    // //     // Check if name already exists
+    // //     if (nameExists(name)) {
+    // //         return "Name already taken";
+    // //     };
         
-        // Create new dApp with auto-generated ID and caller as developer
-        let newDapp: DApp = {
-            id = nextId;
-            name = name;
-            description = description;
-            link = link;
-            developer = msg.caller;
-        };
+    // //     // Create new dApp with auto-generated ID and caller as developer
+    // //     let newDapp: DApp = {
+    // //         id = nextId;
+    // //         name = name;
+    // //         description = description;
+    // //         link = link;
+    // //         developer = msg.caller;
+    // //     };
         
-        // Store the dApp in HashMap
-        dapps.put(nextId, newDapp);
+    //     // Store the dApp in HashMap
+    //     dapps.put(nextId, newDapp);
         
-        // Increment ID counter for next submission
-        nextId += 1;
+    //     // Increment ID counter for next submission
+    //     nextId += 1;
         
-        "DApp submitted successfully"
-    };
+    //     "DApp submitted successfully"
+    // };
     
     /**
      * Get all dApps in the store
