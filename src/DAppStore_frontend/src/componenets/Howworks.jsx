@@ -1,10 +1,14 @@
 import React from "react";
 
+import WalletLinking from "../assets/images/Wallet Linking.svg";
+import DAppDetail from "../assets/images/DApp- Detail Page.svg";
+import EmptyState from "../assets/images/Empty State- Create Dapp 4.svg";
+
 const Howworks = () => {
   const tools = [
     {
       title: "/01",
-      image: "",
+      image: WalletLinking,
       span: "Sign in",
       heading: "with Internet Identity",
       little:
@@ -12,7 +16,7 @@ const Howworks = () => {
     },
     {
       title: "/02",
-      image: "",
+      image: DAppDetail,
       span: "Browse & launch",
       heading: "DApps directly from your device.",
       little:
@@ -20,7 +24,7 @@ const Howworks = () => {
     },
     {
       title: "/03",
-      image: "",
+      image: EmptyState,
       span: "Developers: ",
       heading: "Submit your DApp in a few clicks.",
       little:
@@ -28,14 +32,14 @@ const Howworks = () => {
     },
   ];
   return (
-    <div className="container flex flex-col items-center ">
+    <div className="container flex flex-col items-center pb-24 ">
       <div>
         <p className="font-semibold text-lg mb-14">
           How <span className="lorange">DAppStore</span> Works
         </p>
       </div>
       <div>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-36">
           {tools.map((tool, index) => (
             <div key={index}>
               <div>
@@ -46,11 +50,14 @@ const Howworks = () => {
                   <span className="lorange ">{tool.span}</span> {tool.heading}
                 </p>
                 <p className="gray roboto text-base mb-2">{tool.little}</p>
-                <div className="lorange border-2 border-[#F07100] w-fit py-3 px-6 rounded-xl">
+                <div className="mt-4 lorange border-2 border-[#F07100] w-fit py-3 px-6 rounded-xl cursor-pointer mb-5">
                   Learn more
                 </div>
               </div>
-              <img src="" alt="" />
+              <div className=" relative h-2/5 mt-10 z-50 ">
+                <img src={tool.image} alt="" className="m-auto z-50" />
+                <div className="deeporangebg h-48 rounded-3xl w-3/4 absolute top-32 left-1/2 -translate-x-1/2 -z-40 "></div>
+              </div>
             </div>
           ))}
         </div>

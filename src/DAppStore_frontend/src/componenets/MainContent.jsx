@@ -1,6 +1,6 @@
 import React from "react";
 import rocket1 from "../assets/images/Vector.png";
-import phone from "../assets/images/DApp- Detail Page.png";
+import phone from "../assets/images/DApp- Detail Page.svg";
 import rocket2 from "../assets/images/Group 41.png";
 import game from "../assets/images/Frame.png";
 import { FaArrowRight } from "react-icons/fa";

@@ -8,7 +8,7 @@ import Footer from "../componenets/Footer";
 
 const MainPage = () => {
   return (
-    <div className="w-full border border-yellow-500 ">
+    <div className="w-full">
       <NavBar />
       <MainContent />
       <Webtools />
