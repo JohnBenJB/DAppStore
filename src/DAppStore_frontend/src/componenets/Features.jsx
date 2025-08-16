@@ -52,7 +52,7 @@ const Features = () => {
           user or developer, your journey into the decentralized future begins
           here.
         </p>
-        <div className=" w-fit m-auto deeporangebg text-white cursor-pointer py-3 px-7 rounded-lg font-semibold mb-16 ">
+        <div className=" w-fit m-auto deeporangebg text-white cursor-pointer py-3 px-7 rounded-lg font-semibold mb-16 transition transform hover:scale-110 shadow-lg ">
           Explore DApps
         </div>
       </div>

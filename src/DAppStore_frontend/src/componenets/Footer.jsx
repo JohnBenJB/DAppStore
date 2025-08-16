@@ -27,17 +27,19 @@ const Footer = () => {
         <div className="flex gap-14 roboto">
           <div>
             <h3 className="font-semibold mb-3 text-sm">Quick Links</h3>
-            <p className="text-sm font-extralight">About</p>
-            <p className="text-sm font-extralight">Docs</p>
-            <p className="text-sm font-extralight">Github</p>
-            <p className="text-sm font-extralight">Privacy</p>
+            <p className="text-sm font-extralight cursor-pointer">About</p>
+            <p className="text-sm font-extralight cursor-pointer">Docs</p>
+            <p className="text-sm font-extralight cursor-pointer">Github</p>
+            <p className="text-sm font-extralight cursor-pointer">Privacy</p>
           </div>
           <div>
             <h3 className="font-semibold mb-3 text-sm">Support</h3>
-            <p className="text-sm font-extralight">Contact Us</p>
-            <p className="text-sm font-extralight">Help Center</p>
-            <p className="text-sm font-extralight">Community</p>
-            <p className="text-sm font-extralight">Discord</p>
+            <p className="text-sm font-extralight cursor-pointer">Contact Us</p>
+            <p className="text-sm font-extralight cursor-pointer">
+              Help Center
+            </p>
+            <p className="text-sm font-extralight cursor-pointer">Community</p>
+            <p className="text-sm font-extralight cursor-pointer">Discord</p>
           </div>
         </div>
       </div>

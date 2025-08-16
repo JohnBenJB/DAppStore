@@ -50,7 +50,7 @@ const Howworks = () => {
                   <span className="lorange ">{tool.span}</span> {tool.heading}
                 </p>
                 <p className="gray roboto text-base mb-2">{tool.little}</p>
-                <div className="mt-4 lorange border-2 border-[#F07100] w-fit py-3 px-6 rounded-xl cursor-pointer mb-5">
+                <div className="mt-4 lorange border-2 border-[#F07100] w-fit py-3 px-6 rounded-xl cursor-pointer mb-5 transform transition duration-300 shadow-lg hover:scale-110 ">
                   Learn more
                 </div>
               </div>
