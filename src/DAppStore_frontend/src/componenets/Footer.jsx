@@ -11,9 +11,9 @@ const Footer = () => {
         <p className="font-semibold text-lg  ">DAppStore</p>
       </div>
 
-      <div className="mb-14">
+      <div className="mb-14 sm:flex sm:justify-between sm:gap-4">
         <div className="mb-10">
-          <div>
+          <div className="max-w-72 md:max-w-lg">
             <p className="roboto text-sm leading-normal mb-4 font-extralight">
               Your gateway to the decentralized future. Discover, launch, and
               thrive in the Web3 ecosystem built on the Internet Computer.
@@ -24,7 +24,7 @@ const Footer = () => {
             <FaGithub className="text-lg" />
           </div>
         </div>
-        <div className="flex gap-14 roboto">
+        <div className="flex gap-14 roboto sm:gap-6">
           <div>
             <h3 className="font-semibold mb-3 text-sm">Quick Links</h3>
             <p className="text-sm font-extralight cursor-pointer">About</p>
@@ -44,13 +44,13 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex flex-col">
-        <div className="flex text-xs gap-4 font-extralight  py-4">
+      <div className="flex flex-col sm:flex-row-reverse sm:justify-between sm:pb-6 sm:border-t sm:border-t-white sm:pt-4">
+        <div className="flex text-xs gap-4 font-extralight  py-4 sm:py-0 ">
           <p>Terms of Service</p>
           <p>Privacy Policies</p>
           <p>Cookies Policies</p>
         </div>
-        <div className="py-6 text-xs font-extralight ">
+        <div className="py-6 text-xs font-extralight sm:py-0 ">
           <p>
             © 2024 DAppStore. Built on Internet Computer. All rights reserved.
           </p>

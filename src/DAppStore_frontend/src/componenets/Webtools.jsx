@@ -4,6 +4,7 @@ import rocket from "../assets/images/Frame 1707479994.png";
 import div from "../assets/images/Group 53.png";
 
 const Webtools = () => {
+  // responsivenes fully done
   const tools = [
     {
       image: search,
@@ -29,11 +30,15 @@ const Webtools = () => {
         <p className="lorange">One Place</p>
       </div>
       {/* three tools */}
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 md:grid md:grid-cols-2 tablet:grid-cols-3">
         {tools.map((tool, index) => (
           <div
             key={index}
-            className="border-2 rounded-xl py-8 px-10 flex flex-col items-center shadow-lg"
+            className={`border-2 rounded-xl py-8 px-10 flex flex-col items-center shadow-lg cursor-pointer transition transform duration-300 hover:scale-110 ${
+              index === 2
+                ? "md:col-span-2 md:justify-self-center tablet:col-span-1"
+                : ""
+            }`}
           >
             <img src={tool.image} alt="" className="mb-4" />
             <h3 className="font-semibold text-lg mb-3">{tool.title}</h3>

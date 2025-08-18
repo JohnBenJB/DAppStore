@@ -15,44 +15,51 @@ const Features = () => {
     },
   ];
   return (
-    // would remove the deep orange bg for desktop view ,,, a lot of differences here
-    <div>
-      <div className="container deeporangebg rounded-tl-xl rounded-tr-xl text-white">
-        <div className="deeporangebg">
-          <h3 className="text-lg font-semibold mb-8">Features</h3>
-          <div className="flex">
+    // MAJOR WORK ON FEATURES DIV
+    <div className="sm:border sm:px-[60px]">
+      <div className=" deeporangebg rounded-tl-xl rounded-tr-xl text-white px-[24px] pt-[24px] sm:flex sm:flex-col  sm:rounded-xl">
+        <h3 className="text-lg font-semibold mb-8 sm:text-xl">Features</h3>
+
+        <div className="flex flex-col sm:flex-row">
+          <div className="deeporangebg flex gap-2 justify-between">
             {Features.map((feature, index) => (
               <div
                 key={index}
-                className=" flex flex-col justify-between text-center"
+                className=" flex flex-col justify-between text-center sm:text-left "
               >
-                <p className="text-[10px] ">{feature.name}</p>
-                <img src={feature.image} alt="" className="h-4/5 " />
+                <p className="text-[10px]  max-w-60 m-auto sm:text-xs sm:pl-4 ">
+                  {feature.name}
+                </p>
+                <img
+                  src={feature.image}
+                  alt=""
+                  className={`h-4/5 ${
+                    index === 1 ? "w-64 " : ""
+                  } sm:w-96 sm:h-52`}
+                />
               </div>
             ))}
           </div>
-          <div
-            className="
-          border-t border-t-white flex flex-col pt-6 items-center justify-center"
-          >
-            <p className="text-[10px] text-center max-w-40 ">
+          <div className=" px-[24px]  flex flex-col pt-6 items-center justify-center sm:px-0 sm:pt-0 sm:justify-between sm:gap-5 ">
+            <p className="text-[10px] text-center max-w-40 sm:pt-1 ">
               Quick Submission: Easy dApp onboarding for developers.
             </p>
-            <img src={detail4} alt="" className="h-44 " />
+            <img src={detail4} alt="" className="h-1/2 sm:h-48 sm:w-96" />
           </div>
         </div>
       </div>
-      <div className="container  text-center ">
-        <h3 className="font-semibold text-lg mt-10 mb-4">
+
+      <div className="container text-center ">
+        <h3 className="font-semibold text-lg mt-10 mb-4 md:text-xl">
           Your Gateway to the <span className="lorange">Decentralized</span>{" "}
           Future.
         </h3>
-        <p className="gray roboto text-base mb-6">
+        <p className="gray roboto text-base mb-6 md:max-w-2xl md:m-auto md:mb-8 md:text-lg">
           Start exploring the world of Web3 applications today. Whether you're a
           user or developer, your journey into the decentralized future begins
           here.
         </p>
-        <div className=" w-fit m-auto deeporangebg text-white cursor-pointer py-3 px-7 rounded-lg font-semibold mb-16 transition transform hover:scale-110 shadow-lg ">
+        <div className=" w-fit m-auto deeporangebg text-white cursor-pointer py-3 px-7 rounded-lg font-semibold mb-16 transition transform hover:scale-110 shadow-lg md:text-lg">
           Explore DApps
         </div>
       </div>

@@ -32,31 +32,42 @@ const Howworks = () => {
     },
   ];
   return (
-    <div className="container flex flex-col items-center pb-24 ">
+    <div className="container flex flex-col  pb-24   ">
       <div>
-        <p className="font-semibold text-lg mb-14">
+        <p className="font-semibold text-lg mb-14  m-auto w-fit md:text-xl md:mb-16">
           How <span className="lorange">DAppStore</span> Works
         </p>
       </div>
       <div>
-        <div className="flex flex-col gap-36">
+        <div className="flex flex-col gap-36  md:w-full  lg:max-w-6xl lg:m-auto ">
           {tools.map((tool, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              className={` md:w-full md:flex-row md:flex md:justify-between ${
+                index === 1 ? "md:flex-row-reverse md:ml-11 " : ""
+              }`}
+            >
               <div>
-                <h3 className="lorange font-semibold text-2xl mb-3">
+                <h3 className="lorange font-semibold text-2xl mb-3 lg:text-3xl ">
                   {tool.title}
                 </h3>
-                <p className="font-bold mb-3 text-lg">
+                <p className="font-bold mb-3 text-lg md:max-w-80 lg:text-xl">
                   <span className="lorange ">{tool.span}</span> {tool.heading}
                 </p>
-                <p className="gray roboto text-base mb-2">{tool.little}</p>
-                <div className="mt-4 lorange border-2 border-[#F07100] w-fit py-3 px-6 rounded-xl cursor-pointer mb-5 transform transition duration-300 shadow-lg hover:scale-110 ">
+                <p className="gray roboto text-base mb-2 md:max-w-96 tablet:max-w-lg lg:text-lg">
+                  {tool.little}
+                </p>
+                <div className="mt-4 lorange border-2 border-[#F07100] w-fit py-3 px-6 rounded-xl cursor-pointer mb-5 transform transition duration-300 shadow-lg hover:scale-110 lg:px-8 ">
                   Learn more
                 </div>
               </div>
-              <div className=" relative h-2/5 mt-10 z-50 ">
-                <img src={tool.image} alt="" className="m-auto z-50" />
-                <div className="deeporangebg h-48 rounded-3xl w-3/4 absolute top-32 left-1/2 -translate-x-1/2 -z-40 "></div>
+              <div
+                className={`relative h-2/5 mt-10 z-50 md:-mt-8 md:mr-6 ${
+                  index === 1 ? "mr-0 " : ""
+                }`}
+              >
+                <img src={tool.image} alt="" className="m-auto z-50 lg:w-36" />
+                <div className="deeporangebg h-48 rounded-3xl w-3/4 absolute top-32 left-1/2 -translate-x-1/2 -z-40 max-w-72 md:w-64 lg:w-80 lg:h-52 lg:top-36"></div>
               </div>
             </div>
           ))}
