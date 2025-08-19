@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       screens: {
+        'mini': '690px',
         'tablet': '960px',  // custom breakpoint
       },
     },

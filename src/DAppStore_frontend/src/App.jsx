@@ -7,13 +7,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import About from "./pages/About";
+import Marketplace from "./pages/Marketplace";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route index element={<MainPage />} />
-        {/* <Route path="/aboutus" element={<AboutUs />} /> */}
+        <Route path="/about" element={<About />} />
+        <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/contactus" element={<ContactUs />} />
       </>
     )
   );
