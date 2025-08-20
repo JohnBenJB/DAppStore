@@ -8,16 +8,19 @@ const Webtools = () => {
   const tools = [
     {
       image: search,
+      id: 0,
       title: "Discover",
       about: " Browse top decentralized applications by category",
     },
     {
       image: rocket,
+      id: 1,
       title: "Launch",
       about: " Use dApps instantly via embedded mobile browser or on web",
     },
     {
       image: div,
+      id: 2,
       title: "Build",
       about: " Submit your dApp to reach global ICP users",
     },
@@ -31,11 +34,11 @@ const Webtools = () => {
       </div>
       {/* three tools */}
       <div className="flex flex-col gap-8 md:grid md:grid-cols-2 tablet:grid-cols-3">
-        {tools.map((tool, index) => (
+        {tools.map((tool) => (
           <div
-            key={index}
+            key={tool.id}
             className={`border-2 rounded-xl py-8 px-10 flex flex-col items-center shadow-lg cursor-pointer transition transform duration-300 hover:scale-110 ${
-              index === 2
+              tool.id === 2
                 ? "md:col-span-2 md:justify-self-center tablet:col-span-1"
                 : ""
             }`}

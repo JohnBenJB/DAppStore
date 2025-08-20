@@ -81,9 +81,11 @@ const NavBar = () => {
           </Link>
         </div>
 
-        <div className="font-semibold deeporangebg text-white  rounded-md shadow-xl cursor-pointer transform transition duration-300 relative bottom-32 mx-5 text-center py-4 hover:scale-105  sm:mx-0 sm:bottom-0 sm:px-4 sm:py-2 tablet:text-lg">
-          Sign In
-        </div>
+        <Link to={"/signin"}>
+          <div className="font-semibold deeporangebg text-white  rounded-md shadow-xl cursor-pointer transform transition duration-300 relative bottom-32 mx-5 text-center py-4 hover:scale-105  sm:mx-0 sm:bottom-0 sm:px-4 sm:py-2 tablet:text-lg">
+            Sign In
+          </div>
+        </Link>
       </div>
 
       <div className="sm:hidden" onClick={toggleMenu}>
@@ -92,9 +94,6 @@ const NavBar = () => {
         ) : (
           <IoIosClose className="text-4xl cursor-pointer" />
         )}
-
-        {/* <IoMenu className="text-2xl cursor-pointer" />
-        <IoIosClose /> */}
       </div>
     </div>
   );

@@ -7,10 +7,12 @@ const Features = () => {
   const Features = [
     {
       name: "Search & Filter: Quickly find DApps by name or category.",
+      id: 0,
       image: homescreen,
     },
     {
       name: "Mobile-Friendly: Open any dApp inside DAppStore",
+      id: 1,
       image: detail,
     },
   ];
@@ -22,9 +24,9 @@ const Features = () => {
 
         <div className="flex flex-col sm:flex-row">
           <div className="deeporangebg flex gap-2 justify-between">
-            {Features.map((feature, index) => (
+            {Features.map((feature) => (
               <div
-                key={index}
+                key={feature.id}
                 className=" flex flex-col justify-between text-center sm:text-left "
               >
                 <p className="text-[10px]  max-w-60 m-auto sm:text-xs sm:pl-4 ">
@@ -34,7 +36,7 @@ const Features = () => {
                   src={feature.image}
                   alt=""
                   className={`h-4/5 ${
-                    index === 1 ? "w-64 " : ""
+                    feature.id === 1 ? "w-64 " : ""
                   } sm:w-96 sm:h-52`}
                 />
               </div>

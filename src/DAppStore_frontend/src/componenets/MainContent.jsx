@@ -4,6 +4,7 @@ import phone from "../assets/images/DApp- Detail Page.svg";
 import rocket2 from "../assets/images/Group 41.svg";
 import game from "../assets/images/Group 42.svg";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const MainContent = () => {
   return (
     // major responsiveness to still do
@@ -24,9 +25,11 @@ const MainContent = () => {
           </p>
 
           <div className="flex flex-col items-center justify-center sm:flex-row sm:gap-2 ">
-            <div className="deeporangebg rounded-2xl border-2 border-transparent px-5 py-3 w-fit flex justify-center items-center text-white text-lg gap-4 font-semibold mb-5  cursor-pointer transform transition duration-300  hover:scale-110 shadow-lg sm:px-3 sm:gap-2 sm:mb-0 sm:rounded-xl sm:text-base md:px-5 ">
-              Explore DApps <FaArrowRight className="text-xl " />
-            </div>
+            <Link to={"/marketplace"}>
+              <div className="deeporangebg rounded-2xl border-2 border-transparent px-5 py-3 w-fit flex justify-center items-center text-white text-lg gap-4 font-semibold mb-5  cursor-pointer transform transition duration-300  hover:scale-110 shadow-lg sm:px-3 sm:gap-2 sm:mb-0 sm:rounded-xl sm:text-base md:px-5 ">
+                Explore DApps <FaArrowRight className="text-xl " />
+              </div>
+            </Link>
             <div className="lorange border-b-2 font-semibold border-red-300 text-lg cursor-pointer sm:lorange sm:border-2 sm:border-[#F07100] sm:w-fit sm:py-3 sm:rounded-xl sm:px-3 sm:shadow-lg sm:text-base md:px-5 ">
               Add your DApp +
             </div>

@@ -11,7 +11,7 @@ const Footer = () => {
         <p className="font-semibold text-lg  ">DAppStore</p>
       </div>
 
-      <div className="mb-14 sm:flex sm:justify-between sm:gap-4">
+      <div className="mb-14 sm:flex sm:justify-between sm:gap-4 ">
         <div className="mb-10">
           <div className="max-w-72 md:max-w-lg">
             <p className="roboto text-sm leading-normal mb-4 font-extralight">

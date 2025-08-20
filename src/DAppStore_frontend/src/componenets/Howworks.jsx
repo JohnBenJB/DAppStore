@@ -8,6 +8,7 @@ const Howworks = () => {
   const tools = [
     {
       title: "/01",
+      id: 0,
       image: WalletLinking,
       span: "Sign in",
       heading: "with Internet Identity",
@@ -16,6 +17,7 @@ const Howworks = () => {
     },
     {
       title: "/02",
+      id: 1,
       image: DAppDetail,
       span: "Browse & launch",
       heading: "DApps directly from your device.",
@@ -24,6 +26,7 @@ const Howworks = () => {
     },
     {
       title: "/03",
+      id: 2,
       image: EmptyState,
       span: "Developers: ",
       heading: "Submit your DApp in a few clicks.",
@@ -40,11 +43,11 @@ const Howworks = () => {
       </div>
       <div>
         <div className="flex flex-col gap-36  md:w-full  lg:max-w-6xl lg:m-auto ">
-          {tools.map((tool, index) => (
+          {tools.map((tool) => (
             <div
-              key={index}
+              key={tool.id}
               className={` md:w-full md:flex-row md:flex md:justify-between ${
-                index === 1 ? "md:flex-row-reverse md:ml-11 " : ""
+                tool.id === 1 ? "md:flex-row-reverse md:ml-11 " : ""
               }`}
             >
               <div>
@@ -63,7 +66,7 @@ const Howworks = () => {
               </div>
               <div
                 className={`relative h-2/5 mt-10 z-50 md:-mt-8 md:mr-6 ${
-                  index === 1 ? "mr-0 " : ""
+                  tool.id === 1 ? "mr-0 " : ""
                 }`}
               >
                 <img src={tool.image} alt="" className="m-auto z-50 lg:w-36" />
