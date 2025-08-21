@@ -6,7 +6,7 @@ import map from "../assets/images/map.svg";
 
 const Signin = () => {
   return (
-    <div className="container flex flex-col items-center  pb-10">
+    <div className="container flex flex-col items-center  pb-10 bg-[#FFF7EF]">
       <div className="flex items-center gap-4 mb-6">
         <img src={logo} alt="logo" className="w-14" />
         <h1 className="text-[#333333] font-semibold text-xl md:text-2xl  ">

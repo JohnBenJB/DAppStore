@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Marketplace from "./pages/Marketplace";
 import ContactUs from "./pages/ContactUs";
 import Signin from "./pages/Signin";
+import Stepn from "./pages/Stepn";
 
 function App() {
   const router = createBrowserRouter(
@@ -21,6 +22,7 @@ function App() {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/stepn" element={<Stepn />} />
       </>
     )
   );

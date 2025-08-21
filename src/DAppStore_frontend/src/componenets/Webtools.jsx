@@ -27,7 +27,7 @@ const Webtools = () => {
   ];
   return (
     // coming back to chnage resolution
-    <div className="container border-2 text-center flex flex-col gap-8 pb-20">
+    <div className="container text-center flex flex-col gap-8 pb-20">
       <div className="font-semibold text-lg ">
         <p>All Your Favourite Web3 Tools in</p>
         <p className="lorange">One Place</p>

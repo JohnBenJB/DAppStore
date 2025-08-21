@@ -42,10 +42,11 @@ const NavBar = () => {
               Contact Us
             </Link>
           </div>
-
-          <div className="font-semibold deeporangebg text-white  rounded-md shadow-xl cursor-pointer transform transition duration-300 relative bottom-32 mx-5 text-center py-4 hover:scale-105  ">
-            Sign In
-          </div>
+          <Link to={"/signin"}>
+            <div className="font-semibold deeporangebg text-white  rounded-md shadow-xl cursor-pointer transform transition duration-300 relative bottom-32 mx-5 text-center py-4 hover:scale-105  ">
+              Sign In
+            </div>
+          </Link>
         </div>
       )}
       {/* DESKTOP VIEW */}
