@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/images/logo.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
 const NavBar = () => {
@@ -19,34 +19,56 @@ const NavBar = () => {
       {/* MOBILE VIEW */}
       {menu && (
         <div
-          className="flex  justify-between   flex-col absolute w-full top-20 left-0 pt-6 py-6 h-screen z-[1000] bg-[#FFFBF8] transform transition-all duration-300
+          className="flex  justify-between   flex-col absolute w-full top-16 left-0 pt-6 py-6 h-screen z-[1000] bg-[#FFFBF8] transform transition-all duration-300
       "
         >
-          <div className="font-semibold   text-lg text-[#666666] flex flex-col  px-5 ">
-            <Link to={"/"} className="py-3  border-b border-b-gray-500 ">
+          <div className="font-semibold   text-lg  flex flex-col  px-5 ">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                `py-3  border-b border-b-gray-500  ${
+                  isActive ? "text-[#F07100]" : "text-[#666666]"
+                }`
+              }
+            >
               Home
-            </Link>
-            <Link to="/about" className="py-3  border-b border-b-gray-500 ">
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `py-3  border-b border-b-gray-500  ${
+                  isActive ? "text-[#F07100]" : "text-[#666666]"
+                }`
+              }
+            >
               About
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to={"/marketplace"}
-              className="py-3  border-b border-b-gray-500 "
+              className={({ isActive }) =>
+                `py-3  border-b border-b-gray-500  ${
+                  isActive ? "text-[#F07100]" : "text-[#666666]"
+                }`
+              }
             >
               Marketplace
-            </Link>
-            <Link
-              to={"/contactus"}
-              className="py-3  border-b border-b-gray-500 "
+            </NavLink>
+            <NavLink
+              to={"/contact"}
+              className={({ isActive }) =>
+                `py-3  border-b border-b-gray-500  ${
+                  isActive ? "text-[#F07100]" : "text-[#666666]"
+                }`
+              }
             >
               Contact Us
-            </Link>
+            </NavLink>
           </div>
-          <Link to={"/signin"}>
+          <NavLink to={"/signin"}>
             <div className="font-semibold deeporangebg text-white  rounded-md shadow-xl cursor-pointer transform transition duration-300 relative bottom-32 mx-5 text-center py-4 hover:scale-105  ">
               Sign In
             </div>
-          </Link>
+          </NavLink>
         </div>
       )}
       {/* DESKTOP VIEW */}
@@ -56,37 +78,53 @@ const NavBar = () => {
       "
       >
         <div className="font-semibold   text-lg text-[#666666] flex flex-col  px-5 sm:text-base sm:gap-2 sm:flex-row sm:items-center md:gap-5 tablet:gap-8 tablet:text-lg lg:gap-12">
-          <Link
+          <NavLink
             to={"/"}
-            className="py-3  border-b border-b-gray-500 sm:border-b-0"
+            className={({ isActive }) =>
+              `py-3  border-b border-b-gray-500 sm:border-b-0 ${
+                isActive ? "text-[#F07100]" : "text-[#666666]"
+              }`
+            }
           >
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/about"
-            className="py-3  border-b border-b-gray-500 sm:border-b-0"
+            className={({ isActive }) =>
+              `py-3  border-b border-b-gray-500 sm:border-b-0 ${
+                isActive ? "text-[#F07100]" : "text-[#666666]"
+              }`
+            }
           >
             About
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to={"/marketplace"}
-            className="py-3  border-b border-b-gray-500 sm:border-b-0"
+            className={({ isActive }) =>
+              `py-3  border-b border-b-gray-500 sm:border-b-0 ${
+                isActive ? "text-[#F07100]" : "text-[#666666]"
+              }`
+            }
           >
             Marketplace
-          </Link>
-          <Link
-            to={"/contactus"}
-            className="py-3  border-b border-b-gray-500 sm:border-b-0"
+          </NavLink>
+          <NavLink
+            to={"/contact"}
+            className={({ isActive }) =>
+              `py-3  border-b border-b-gray-500 sm:border-b-0 ${
+                isActive ? "text-[#F07100]" : "text-[#666666]"
+              }`
+            }
           >
             Contact Us
-          </Link>
+          </NavLink>
         </div>
 
-        <Link to={"/signin"}>
+        <NavLink to={"/signin"}>
           <div className="font-semibold deeporangebg text-white  rounded-md shadow-xl cursor-pointer transform transition duration-300 relative bottom-32 mx-5 text-center py-4 hover:scale-105  sm:mx-0 sm:bottom-0 sm:px-4 sm:py-2 tablet:text-lg">
             Sign In
           </div>
-        </Link>
+        </NavLink>
       </div>
 
       <div className="sm:hidden" onClick={toggleMenu}>

@@ -2,6 +2,8 @@ import React from "react";
 import homescreen from "../assets/images/Home Screen.svg";
 import detail from "../assets/images/DApp- Detail Page (2).svg";
 import detail4 from "../assets/images/Empty State- Create Dapp 4 (2).svg";
+import p4 from "../assets/images/P4.svg";
+import p5 from "../assets/images/P5.svg";
 
 const Features = () => {
   const Features = [
@@ -19,7 +21,7 @@ const Features = () => {
   return (
     // MAJOR WORK ON FEATURES DIV
     <div className="sm:border sm:px-[60px]">
-      <div className=" deeporangebg rounded-tl-xl rounded-tr-xl text-white px-[24px] pt-[24px] sm:flex sm:flex-col  sm:rounded-xl">
+      <div className=" deeporangebg  relative rounded-tl-xl rounded-tr-xl text-white px-[24px] pt-[24px] sm:flex sm:flex-col  sm:rounded-xl">
         <h3 className="text-lg font-semibold mb-8 sm:text-xl">Features</h3>
 
         <div className="flex flex-col sm:flex-row">
@@ -49,6 +51,9 @@ const Features = () => {
             <img src={detail4} alt="" className="h-1/2 sm:h-48 sm:w-96" />
           </div>
         </div>
+
+        <img src={p4} alt="" className="absolute top-0 left-0" />
+        <img src={p5} alt="" className="absolute bottom-0 right-0" />
       </div>
 
       <div className="container text-center ">

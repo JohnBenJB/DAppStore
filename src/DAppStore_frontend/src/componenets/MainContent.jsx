@@ -3,6 +3,9 @@ import rocket1 from "../assets/images/Vector.svg";
 import phone from "../assets/images/DApp- Detail Page.svg";
 import rocket2 from "../assets/images/Group 41.svg";
 import game from "../assets/images/Group 42.svg";
+import p1 from "../assets/images/P1.svg";
+import p2 from "../assets/images/P2.svg";
+import p3 from "../assets/images/P3.svg";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const MainContent = () => {
@@ -43,13 +46,39 @@ const MainContent = () => {
           <div className=" w-48 relative flex flex-col gap-2  sm:w-52 md:w-60">
             <img src={phone} alt="" className="w-full" />
             {/* floating objects */}
-            <div className="border-2 flex items-center py-1 px-3 text-[0.6rem]  gap-3  rounded-lg absolute top-24 right-28 bg-white w-36 sm:top-28 md:right-36 md:top-32 md:py-2 ">
-              <img src={rocket2} alt="" className="w-10" />
-              <p className="max-w-28">Launch your DApps</p>
+            <div className=" border py-1 px-3 text-[0.6rem]  rounded-lg absolute top-24 right-28 bg-white w-36 sm:top-28 md:right-36 md:top-32 md:py-2 ">
+              <div className="relative flex items-center gap-3 z-20 ">
+                <img src={rocket2} alt="" className="w-10" />
+                <p className="max-w-28">Launch your DApps</p>
+                <img
+                  src={p1}
+                  alt=""
+                  className="absolute  -top-1 -z-20 -left-3"
+                />
+                <img
+                  src={p2}
+                  alt=""
+                  className="absolute -bottom-1 left-20 -z-20"
+                />
+                <img src={p3} alt="" className="absolute -right-3 -top-1 " />
+              </div>
             </div>
-            <div className="border-2 flex items-center py-1 px-3 text-[0.6rem]  gap-3  rounded-lg absolute bg-white w-36 bottom-32 left-28 sm:left-20 md:left-32 md:py-2 ">
-              <img src={game} alt="" className="w-8" />
-              <p className="max-w-28">Access to DApps Games</p>
+            <div className=" border py-1 px-3 text-[0.6rem]  rounded-lg absolute bg-white w-36 bottom-32 left-28 sm:left-20 md:left-32 md:py-2 z-20">
+              <div className="flex items-center gap-3 relative ">
+                <img src={game} alt="" className="w-8" />
+                <p className="max-w-28">Access to DApps Games</p>
+                <img
+                  src={p1}
+                  alt=""
+                  className="  absolute -top-1 -left-3 -z-20"
+                />
+                <img
+                  src={p2}
+                  alt=""
+                  className="absolute -bottom-1 left-20 -z-20"
+                />
+                <img src={p3} alt="" className="absolute -right-3 -top-1 " />
+              </div>
             </div>
           </div>
 

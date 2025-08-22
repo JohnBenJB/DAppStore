@@ -7,12 +7,14 @@ import Lists from "../componenets/Lists";
 import search from "../assets/images/search.svg";
 import filter from "../assets/images/filter.svg";
 import arrdown from "../assets/images/arrdown.svg";
+import arrleft from "../assets/images/arrleft.svg";
+import arrright from "../assets/images/arrright.svg";
 
 const Marketplace = () => {
   return (
     <div>
       <NavBar />
-      <div className="container bg-[#FF973C] text-white pb-6">
+      <div className="container bg-[#FF973C] text-white pb-6 relative z-50">
         <div
           className="text-[10px] flex  gap-3 mb-4 items-center
         "
@@ -27,13 +29,13 @@ const Marketplace = () => {
       <div className="container">
         <div className="flex  items-center font-semibold gap-8 text-sm mb-12">
           <p className="border-b-2 lorange border-b-[#F07100]">Games</p>
-          <p className="border-b-2 border-b-transparent text-[#666666] hover:border-b-[#F07100] cursor-pointer transform transition duration-200">
+          <p className="border-b-2 border-b-transparent text-[#666666] hover:border-b-[#F07100] hover:text-[#F07100] cursor-pointer transform transition duration-200">
             NFTs
           </p>
-          <p className="border-b-2 border-b-transparent text-[#666666] hover:border-b-[#F07100] cursor-pointer transform transition duration-200">
+          <p className="border-b-2 border-b-transparent text-[#666666] hover:border-b-[#F07100] hover:text-[#F07100] cursor-pointer transform transition duration-200">
             DeFi
           </p>
-          <p className="border-b-2 border-b-transparent text-[#666666] hover:border-b-[#F07100] cursor-pointer transform transition duration-200">
+          <p className="border-b-2 border-b-transparent text-[#666666] hover:border-b-[#F07100] hover:text-[#F07100] cursor-pointer transform transition duration-200">
             Socials
           </p>
         </div>
@@ -65,7 +67,7 @@ const Marketplace = () => {
       </div>
 
       {/* special scenario */}
-      <div className="container sm:flex sm:gap-4 sm:justify-between ">
+      <div className="container sm:flex sm:gap-4 sm:justify-between mb-20">
         <div className="hidden filter h-fit border border-[#E6E2E2] shadow-md md:flex flex-col mt-40 py-4 w-[35%] px-4 rounded-xl tablet:w-[28%] tablet:mt-20 tablet:pb-14 xl:w-[25%]">
           <p className="border-b border-b-[#DDDDDDS]text-[#333333] mt-8  pb-2 mb-5 tablet:mt-10 ">
             Filter
@@ -130,6 +132,13 @@ const Marketplace = () => {
 
           {/* contains the lists stuff */}
           <Lists />
+          <div className=" mt-10 flex justify-center items-center gap-6 text-xs text-[#666666] font-semibold">
+            <img src={arrleft} alt="" className="cursor-pointer" />
+            <p className=" text-black cursor-pointer">1</p>
+            <p className="cursor-pointer">2</p>
+            <p className="cursor-pointer">3</p>
+            <img src={arrright} alt="" className="cursor-pointer" />
+          </div>
         </div>
       </div>
       <Relatedcollections />

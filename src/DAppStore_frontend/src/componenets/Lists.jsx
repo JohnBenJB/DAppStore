@@ -16,6 +16,7 @@ import tombala from "../assets/images/tombala.svg";
 import cronos from "../assets/images/Cronos.svg fill.svg";
 import dust from "../assets/images/dust.svg";
 import fara from "../assets/images/fara.svg";
+import { Link, Links } from "react-router-dom";
 
 const Lists = () => {
   const dapps = [
@@ -25,6 +26,7 @@ const Lists = () => {
       name: "STEPN",
       lil1: "Web3 Games",
       lil2: "",
+      path: "/stepn",
       content:
         "STEPN is a web3 lifestyle app that rewards users for movement · users equipped with STEPN nfts can earn by walking, jogging",
       img2: container,
@@ -200,42 +202,52 @@ const Lists = () => {
   ];
   return (
     <div>
-      <div className=" flex flex-col gap-6 mt-14  w-full  tablet:gap-3 md:mt-8 tablet:grid tablet:grid-cols-2 xl:grid-cols-3">
+      <div className=" flex flex-col gap-6 mt-14  w-full  tablet:gap-3 md:mt-8 tablet:grid tablet:grid-cols-2 xl:grid-cols-3 z-50">
         {dapps.map((list) =>
           list.speciial ? (
-            <div className="border py-6 rounded-lg px-6 shadow-lg deeporangebg text-white cursor-pointer tablet:px-4">
-              <p className="lorange bg-white w-fit text-sm py-1 px-3 rounded-md mb-6">
-                {list.btn}
-              </p>
-              <h1 className="font-semibold text-2xl  h-44">{list.title}</h1>
-            </div>
+            <Link to={list.path}>
+              <div
+                key={list.id}
+                className="border py-6 rounded-lg px-6 shadow-lg deeporangebg text-white cursor-pointer tablet:px-4 relative z-20 transition transform duration-300 hover:scale-105"
+              >
+                <p className="lorange bg-white w-fit text-sm py-1 px-3 rounded-md mb-6">
+                  {list.btn}
+                </p>
+                <h1 className="font-semibold text-2xl  h-44">{list.title}</h1>
+              </div>
+            </Link>
           ) : (
-            <div className="border py-6 rounded-lg px-6 shadow-lg  cursor-pointer tablet:px-4">
-              <div className="flex  items-center gap-4 h-12 mb-6">
-                <img src={list.img1} alt="" className="w-10 rounded-full" />
-                <h1 className="text-[#333333] text-2xl font-semibold ">
-                  {list.name}
-                </h1>
-              </div>
+            <Link to={list.path}>
+              <div
+                key={list.id}
+                className="border py-6 rounded-lg px-6 shadow-lg  cursor-pointer tablet:px-4 transition transform duration-300 hover:scale-105"
+              >
+                <div className="flex  items-center gap-4 h-12 mb-6">
+                  <img src={list.img1} alt="" className="w-10 rounded-full" />
+                  <h1 className="text-[#333333] text-2xl font-semibold ">
+                    {list.name}
+                  </h1>
+                </div>
 
-              <div className="flex text-xs gap-3 items-center h-8 mb-4 ">
-                <p className="text-[#007BFF] border border-[#C0D4FF] px-2 py-1  rounded-lg">
-                  {list.lil1}
-                </p>
-                <p className="text-xs bg-[#FDF2E8] w-fit rounded-lg lorange px-2 py-1 font-normal ">
-                  {list.lil2}
-                </p>
-              </div>
+                <div className="flex text-xs gap-3 items-center h-8 mb-4 ">
+                  <p className="text-[#007BFF] border border-[#C0D4FF] px-2 py-1  rounded-lg">
+                    {list.lil1}
+                  </p>
+                  <p className="text-xs bg-[#FDF2E8] w-fit rounded-lg lorange px-2 py-1 font-normal ">
+                    {list.lil2}
+                  </p>
+                </div>
 
-              <div className="gray roboto">
-                <p className="text-sm mb-4 h-24">{list.content}</p>
-              </div>
+                <div className="gray roboto">
+                  <p className="text-sm mb-4 h-24">{list.content}</p>
+                </div>
 
-              <div className="flex gap-2">
-                <img src={list.img2} alt="" />
-                <img src={list.img3} alt="" />
+                <div className="flex gap-2">
+                  <img src={list.img2} alt="" />
+                  <img src={list.img3} alt="" />
+                </div>
               </div>
-            </div>
+            </Link>
           )
         )}
       </div>

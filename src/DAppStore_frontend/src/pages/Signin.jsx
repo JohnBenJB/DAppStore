@@ -45,6 +45,9 @@ const Signin = () => {
           <span className="lorange font-normal cursor-pointer">Login</span>
         </p>
       </div>
+      <p className="font-semibold text-[#333333] mt-4 text-xl">
+        Powered by ICP
+      </p>
     </div>
   );
 };
