@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/images/logo.svg";
 import identity from "../assets/images/identity.svg";
 import drops from "../assets/images/drops.svg";
 import map from "../assets/images/map.svg";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Signin = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, login } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/marketplace");
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <div className="container flex flex-col items-center  pb-10 bg-[#FFF7EF]">
       <div className="flex items-center gap-4 mb-6">
@@ -37,9 +47,12 @@ const Signin = () => {
           </div>
         </div>
 
-        <div className="deeporangebg w-full font-semibold rounded-md  cursor-pointer text-white max-w-sm py-2 transition transform duration-300 hover:scale-110 mb-5  ">
+        <button
+          onClick={login}
+          className="deeporangebg w-full font-semibold rounded-md  cursor-pointer text-white max-w-sm py-2 transition transform duration-300 hover:scale-110 mb-5  "
+        >
           Sign In
-        </div>
+        </button>
         <p className="text-sm font-semibold">
           Already have an account?{" "}
           <span className="lorange font-normal cursor-pointer">Login</span>

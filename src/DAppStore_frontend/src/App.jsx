@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { DAppStore_backend } from "declarations/DAppStore_backend";
 import {
   Route,
   createBrowserRouter,

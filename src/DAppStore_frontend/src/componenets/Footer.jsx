@@ -2,13 +2,22 @@ import React from "react";
 import logo from "../assets/images/Group 40.svg";
 import { FaGithub } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const Footer = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/signin");
+  };
   return (
     <div className="container bg-black text-white">
       <div className="flex items-center gap-2 mb-6">
         <img src={logo} alt="" />
-        <p className="font-semibold text-lg  ">DAppStore</p>
+        <p className="font-semibold text-lg">DAppStore</p>
       </div>
 
       <div className="mb-14 sm:flex sm:justify-between sm:gap-4 ">
@@ -43,6 +52,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <button
+        onClick={handleLogout}
+        className="rounded-2xl bg-neutral-200 text-sm text-black font-semibold px-3 py-2 mb-4"
+      >
+        Log out
+      </button>
 
       <div className="flex flex-col sm:flex-row-reverse sm:justify-between sm:pb-6 sm:border-t sm:border-t-white sm:pt-4">
         <div className="flex text-xs gap-4 font-extralight  py-4 sm:py-0 ">
